@@ -1,0 +1,88 @@
+1
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jun  1 16:49:59 2021
+
+@author: danny
+"""
+
+import numpy as np
+
+a=np.linspace(0,5,20)
+print(a)
+2
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jun  1 16:56:20 2021
+
+@author: danny
+"""
+
+import numpy as np
+
+a=np.arange(50)
+a=a.reshape(5,10)
+print(a)
+3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jun  1 16:58:38 2021
+
+@author: danny
+"""
+
+import numpy as np
+
+a=np.array([[2,2],[2,2],[2,2]])
+b=np.array([[1,4],[2,5],[3,6]])
+print('猭 :\n',a+b)
+print('搭猭 :\n',a-b)
+print('猭 :\n',a*b)
+print('埃猭 :\n',a/b)
+print('緇计 :\n',a%b)
+print('A锣痻皚 :\n',np.transpose(a))
+print('B锣痻皚 :\n',np.transpose(b))
+4
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jun  1 17:06:42 2021
+
+@author: danny
+"""
+
+import numpy as np
+
+
+with open('weatherTaipei.txt','r') as f:
+    text=f.readlines()
+temperature=[]
+for temp in text[1:len(text)-1]:
+    temperature.append(int(temp.split(',')[1]))
+    temperature.append(int(temp.split(',')[2].split('\n')[0]))
+print('程蔼放 : ',np.max(temperature))
+print('キА放 : ',np.mean(temperature))
+
+5
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jun  1 17:43:17 2021
+
+@author: danny
+"""
+
+import numpy as np
+
+randomnum=[]
+for i in range(15):
+    randomnum.append(np.random.randint(5,16))
+randomnum=np.array(randomnum)
+x=randomnum.reshape(3,5)
+print('程 : ',np.max(x))
+print('程 : ',np.min(x))
+print('羆㎝ : ',np.sum(x))
+print('キА : ',np.mean(x))
+print('à辅じ : ',x[0,0],x[0,4],x[2,0],x[2,4])
+with open('EX3_2.txt','w') as f:
+    f.write(str(x[0,0])+str(x[0,4])+str(x[2,0])+str(x[2,4]))
+print('Y :\n',x)
+print('Z :\n',x+x)

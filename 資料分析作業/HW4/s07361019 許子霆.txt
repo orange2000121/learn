@@ -1,0 +1,157 @@
+1
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Mar 30 13:49:38 2021
+
+@author: danny
+"""
+import re
+
+
+for i in range(3):
+    number=input('輸入電話號碼:')
+    rule=re.compile(r'\d{3}-\d{4}-\d{4}')#建立正規表示式
+    if rule.search(number):#判斷有沒有府和正則表示式
+        print('是大陸號碼')
+    else:
+        print('不是大陸號碼')
+    
+        
+2
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Mar 30 14:38:25 2021
+
+@author: danny
+"""
+import re
+msgs=['Please call my secretary using 0930-919-919 or 0952-001-001',
+     '請明天17:30和我一起參加明志科大教師節晚餐',
+     '請明天17:30和一起參加明志科大教師節晚餐, 可用0933-080-080聯絡我']#測試用句子
+for msg in msgs:
+    phone=re.search(r'\d{4}-\d{3}-\d{3}',msg)#收尋第一個出現府和的句字
+    if phone:
+        print('電話號碼是:',phone.group())
+    else:
+        print(msg,'字串不含電話號碼')
+3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Mar 30 15:03:31 2021
+
+@author: danny
+"""
+
+import re
+msgs=['Please call my secretary using 0930-919-919 or 0952-001-001',
+     '請明天17:30和我一起參加明志科大教師節晚餐',
+     '請明天17:30和一起參加明志科大教師節晚餐, 可用0933-080-080聯絡我']#測試用句子
+for msg in msgs:
+    phone=re.findall(r'\d{4}-\d{3}-\d{3}',msg)#收尋所有輔合的句子
+    if phone:
+        print('電話號碼是:',phone)
+    else:
+        print(msg,'字串不含電話號碼')
+4
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Mar 30 15:08:23 2021
+
+@author: danny
+"""
+
+import re
+msg='我喜歡看小龍女與楊過,不僅因為小龍女美麗,楊過在戲中所扮演的角色更是讓我喜歡'#測試用句子
+
+while 1:
+    find=input('收尋字串:')
+    num=len(re.findall(find,msg))#計算所有收尋到的句子總數
+    print('所收尋字串: ',find,end=' ')
+    print('共出現%d次' %(num))
+    if input('y繼續')!='y':
+        break
+5
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Mar 30 15:22:35 2021
+
+@author: danny
+"""
+
+import re
+msgs=['son','sonson','sonsonson','sonsonsonson','sonsonsonsonson','sonsonsonsonsonson']#測試用句子
+pattern1='(son){2,}'
+pattern2='(son){,5}'
+print('以下用pattern1%s收尋'%(pattern1))
+for msg in msgs:
+    txt=re.search(pattern1,msg)#第一種方式搜尋
+    if txt:
+        print('收尋成功:',txt.group())
+    else:
+        print('收尋失敗')
+print('以下用pattern2%s收尋'%(pattern2))
+for msg in msgs:
+    txt=re.search(pattern2,msg)#第二種方式收尋
+    if txt:
+        print('收尋成功:',txt.group())
+    else:
+        print('收尋失敗')   
+        
+
+6
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Mar 30 15:31:51 2021
+
+@author: danny
+"""
+
+import re
+msg='sonsonsonsonson'#測試用句子
+pattern='(son){3,5}'#3~5個重複
+print('最短:',re.search(pattern+'?',msg).group())#找重複出現最少
+print('最長:',re.search(pattern,msg).group())#找重複最多
+7
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Mar 30 15:35:55 2021
+
+@author: danny
+"""
+
+import re
+msg='1 cat,2 dogs,3 pigs,3 swans'#測試用句子
+pattern='\d\ \w{3,5}'#建立pattern
+print(re.findall(pattern,msg))#收尋所有
+8
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Mar 30 15:41:22 2021
+
+@author: danny
+"""
+
+import re
+msgs=['0932895453','093289ss53']#測試用句子
+pattern='\d{10}'#必須府和10個都是數字
+for msg in msgs:
+    txt=re.search(pattern,msg)
+    if txt:
+        print('收尋成功:',txt.group())
+    else:
+        print(msg,'非全部是數字')
+9
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Mar 30 15:50:29 2021
+
+@author: danny
+"""
+
+import re
+msg=''''02-88223349, (02)-26669999, 02-29998888 ext 123,
+        12345678.02 33887766 ext,12222,
+        02-1234567, 02-123456789, 23-123456'''#測試用句子
+pattern='\(?\d{2}\)?\-?\d{7,8}'#括號可有殼無，-可有可無，第一串數字需要為二，最後需要有7~8字
+print(re.findall(pattern,msg))
+

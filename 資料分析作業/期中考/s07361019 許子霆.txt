@@ -1,0 +1,102 @@
+1
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Apr 21 10:14:02 2021
+
+@author: danny
+"""
+
+def factorial(n):#計算階乘
+    num=1
+    for i in range(2,n+1):
+        num*=int            #從1乘到n
+    return num
+x=int(input('輸入整數x'))
+n=int(input('輸入整數n'))
+num=0
+    
+for i in range(n+1):
+    num+=(x**i)/(factorial(i))#公式
+print(num)
+2
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Apr 21 10:33:29 2021
+
+@author: danny
+"""
+
+import re
+number=input('輸入電話號碼:')
+rule=re.compile(r'\d{4}-\d{3}-\d{3}')#建立正規表示式
+if rule.search(number):#判斷有沒有符和正則表示式
+       print('是台灣號碼')
+else:
+    print('不是台灣號碼')
+3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Apr 21 10:45:42 2021
+
+@author: danny
+"""
+
+from PIL import Image,ImageDraw
+newimage=Image.new('RGB',(300,300),'Red')
+drawobj=ImageDraw.Draw(newimage)
+for x in range(100,200,3):
+    for y in range(100,200,3):
+        drawobj.point([(x,y)],fill='Black')
+        
+drawobj.line([(0,0),(299,0),(299,299),(0,299),(0,0)],fill='Black')#
+for x in range(150,300,10):
+    drawobj.line([(x,0),(300,x-150)],fill='Blue')#左上外框
+for x in range(150,-1,-10):
+    drawobj.line([(x,0),(0,150-x)],fill='Blue')#右上外框
+for y in range(150,300,10):
+    drawobj.line([(0,y),(y-150,300)],fill='Blue')#左下外框
+for y in range(300,149,-10):
+    drawobj.line([(y,300),(300,450-y)],fill='Blue')#右下外框
+newimage.save('3.jpg')
+4
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Apr 21 10:48:47 2021
+
+@author: danny
+"""
+
+class CRect:
+    def __init__(self,width,height,length):
+        self.width=width
+        self.height=height
+        self.length=length
+    def computeArea(self):
+        self.area=self.width*self.height#計算面積
+    def computeVolume(self):
+        self.volume=self.width*self.height*self.length#計算體積
+    def show(self):
+        self.computeVolume()
+        self.computeArea()
+        print('面積:',self.area)
+        print('體積:',self.volume)
+rec1=CRect(10,20,30)
+rec2=CRect(40,20,60)
+rec3=CRect(50,70,100)
+rec1.show()
+rec2.show()
+rec3.show()
+5
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Apr 21 11:21:20 2021
+
+@author: danny
+"""
+def hello(event):
+    print(i)
+import tkinter as tk
+window=tk.Tk()
+for i in range(9):
+    tk.Label(window,text='hi',borderwidth=1,relief="sunken", width=10,height=10).bind('<Button-1>', hello)
+window.mainloop()

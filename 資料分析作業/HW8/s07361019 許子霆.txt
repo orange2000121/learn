@@ -1,0 +1,95 @@
+1
+import tkinter as tk
+
+windows = tk.Tk()
+canvas = tk.Canvas(windows ,width=400 ,height=250)      #建立畫布
+canvas.pack()
+
+for x in range(0,100,5):                        #建立一個間隔為5的迴圈畫出20個長方形
+    canvas.create_line(10+x ,10+x ,395-x ,10+x ,395-x ,245-x ,10+x ,245-x ,10+x ,10+x ,fill="SlateBlue")
+windows.mainloop
+2
+# -*- coding: utf-8 -*-
+"""
+Created on Tue May 11 19:20:14 2021
+
+@author: danny
+"""
+
+import tkinter as tk
+window = tk.Tk()
+canvas = tk.Canvas(window ,width=400 ,height=250)      #建立畫布
+canvas.pack()
+
+for y in range(0,201,10):                        #建立一個間隔為10的迴圈畫出橫線
+    for x in range(0,201,10):                    #建立一個間隔為10的迴圈畫出直線  
+        canvas.create_line(10 ,10+y ,210 ,10+y ,fill="SlateBlue")
+        canvas.create_line(10+x ,10 ,10+x ,210 ,fill="SlateBlue")
+
+
+3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue May 11 19:22:28 2021
+
+@author: danny
+"""
+
+import tkinter as tk
+import time
+
+window = tk.Tk()
+canvas = tk.Canvas(window ,width=400 ,height=250)      #建立畫布
+canvas.pack()
+
+canvas.create_text(50 ,125 ,text="東海大學" ,fill="Crimson")       #建立文字
+
+for x in range (0 ,40):                #讓字體移動
+    canvas.move(1 ,5 ,0)
+    window.update()
+    time.sleep(0.05)
+
+4
+# -*- coding: utf-8 -*-
+"""
+Created on Tue May 11 19:25:46 2021
+
+@author: danny
+"""
+
+import tkinter as tk
+
+global x           #設定全域變數
+global y
+x = 10             #設定初值
+y = 10
+
+def lineprint(event):            #判斷按鍵並執行畫線動作
+    global x
+    global y
+    if event.keysym == 'Left':
+        canvas.create_line(x ,y ,x-5 ,y ,fill="Crimson")
+        x = x-5
+        y = y
+    if event.keysym == 'Right':
+        canvas.create_line(x ,y ,x+5 ,y ,fill="Crimson")
+        x = x+5
+        y = y
+    if event.keysym == 'Up':
+        canvas.create_line(x ,y ,x ,y-5 ,fill="Crimson")
+        x = x
+        y = y-5
+    if event.keysym == 'Down':
+        canvas.create_line(x ,y ,x ,y+5 ,fill="Crimson")
+        x = x
+        y = y+5
+
+window = tk.Tk()
+canvas = tk.Canvas(window ,width=400 ,height=250)      #建立畫布
+canvas.pack()
+
+canvas.bind_all('<KeyPress-Left>' ,lineprint)       #訊息綁定
+canvas.bind_all('<KeyPress-Right>',lineprint)
+canvas.bind_all('<KeyPress-Up>' ,lineprint)
+canvas.bind_all('<KeyPress-Down>' ,lineprint)
+

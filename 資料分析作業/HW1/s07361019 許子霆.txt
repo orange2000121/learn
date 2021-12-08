@@ -1,0 +1,140 @@
+1
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar  3 09:51:01 2021
+
+@author: danny
+"""
+
+v=float(input('輸入初始速度:'));#輸入初始速度:
+a=float(input('輸入初始加速度:'));#輸入初始加速度
+length=(v*v)/2*a;#計算最短長度
+print('最短跑到朝度:',length);#輸出計算結果
+
+2
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar  3 10:35:54 2021
+
+@author: danny
+"""
+
+a=int(input('a:'));#輸入係數
+b=int(input('b:'));#輸入係數
+c=int(input('c:'));#輸入係數
+d=int(input('d:'));#輸入係數
+if(a*d-b*c):#公式解
+    print('有解');
+else:
+    print('無解');
+3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar  3 09:57:46 2021
+
+@author: danny
+"""
+
+r=float(input('圓柱半徑:'));#輸入初始資料
+h=float(input('圓柱高:'));#輸入初始資料
+area=3.14*r*r;#計算底面積
+volune=area*h;#機算體積
+print('底面積:',area);#輸出底面積
+print('體積:',volune);#輸出體積
+4
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar  3 10:01:44 2021
+
+@author: danny
+"""
+
+num=int(input('輸入三位數:'));#輸入三位數
+num-=num%10;#求除十的餘數減掉
+print(num);#輸出答案
+5
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar  3 10:04:07 2021
+
+@author: danny
+"""
+import math;
+x1=float(input('x1='));#點一
+y1=float(input('y1='));#點一
+x2=float(input('x2='));#點二
+y2=float(input('y2='));#點二
+length=math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));#機算最短距離
+print('最短距離:',length);#輸出答案
+6
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar  3 10:11:10 2021
+
+@author: danny
+"""
+
+f=float(input('華氏溫度:'));#輸入華氏溫度
+print('華氏轉攝氏:',(f-32)*5/9);#華氏轉攝氏
+c=float(input('攝氏溫度:'));#輸入攝氏溫度
+print('攝氏轉華氏:',c*9/5+32);#攝氏轉華氏
+
+
+7
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar  3 10:16:32 2021
+
+@author: danny
+"""
+
+v0=float(input('起始速度:'));#起始速度
+v1=float(input('末速度:'));#末速度
+print('平均速度:',(v0+v1)/2);#相加除二求平均
+8
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar  3 10:20:54 2021
+
+@author: danny
+"""
+
+num=int(input('金額:'));#輸入金額
+hundred=int(num/100);#除一百得整數部分
+num-=hundred*100;#扣除百位以上
+fifty=int(num/50);#除五十得整數部分
+num-=fifty*50;#扣除剩下五十的倍數
+ten=int(num/10);#除十得整數部分
+num-=ten*10;#扣除剩下十的倍數
+print('可換:')
+print('百元:',hundred,'五十:',fifty,'十元:',ten);#輸出答案
+9
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar  3 10:27:27 2021
+
+@author: danny
+"""
+
+money=int(input('消費金額:'));#輸入消費金額
+if(money>100000):#如果大於100000
+    print('折扣後消費金額:',money-money*0.15);#輸出15%off
+elif(money>50000):#如果大於50000
+    print('折扣後消費金額:',money-money*0.1);#輸出10%off
+elif(money>10000):#如果大於10000
+    print('折扣後消費金額:',money-money*0.05);#輸出5%off
+else:
+    print('消費金額:',money)
+10
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar  3 10:33:42 2021
+
+@author: danny
+"""
+
+num=int(input('輸入一整數:'));#輸入一個整數
+if(num%7):#求除七的餘數 
+    print('false');
+else:
+    print('true');

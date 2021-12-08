@@ -1,0 +1,220 @@
+1
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar 10 09:29:03 2021
+
+@author: danny
+"""
+
+num=[]
+for i in range(3):
+    num.append(int(input('輸入正數'))) 
+for i in range(len(num)):#氣泡排序法
+    for j in range(i+1,len(num)):
+        if(num[i]>num[j]):
+            temp=num[i]
+            num[i]=num[j]
+            num[j]=temp
+print('由大至小')
+for i in range(len(num)-1,-1,-1):
+    print(num[i])
+print('由小至大')
+for i in num:
+    print(i)
+2
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar 10 11:06:15 2021
+
+@author: danny
+"""
+a=[]
+for i in range(3):
+    temp=[]
+    for j in range(3):
+        temp.append(int(input('a(%d,%d)='%(i,j))))
+    a.append(temp)
+print('max=',int(a.index((max(a)))/3),int(a.index((max(a)))%3))
+print('min=',int(a.index((min(a)))/3),int(a.index((min(a)))%3))
+3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar 10 09:40:41 2021
+
+@author: danny
+"""
+
+n=int(input('輸入整數'))
+num=1
+for i in range(1,n+1):
+    num*=i
+print('n!=',end='')
+print(num)
+4
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar 10 09:43:30 2021
+
+@author: danny
+"""
+
+n=int(input('輸入整數'))
+for i in range(n,0,-1):
+    for j in range(1,i+1):
+        print(j,end='  ')
+    print()
+
+5
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar 10 09:47:41 2021
+
+@author: danny
+"""
+
+num=[]
+for i in range(10):
+    num.append(int(input('輸入整數')))
+odd=0
+even=0
+for i in num:
+    if i%2:
+        odd+=1
+    else:
+        even+=1
+print('偶數個數:',even)
+print('奇數個數:',odd)
+6
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar 10 09:56:03 2021
+
+@author: danny
+"""
+
+n=int(input('輸入整數'))
+prime=[2]
+
+for i in range(3,n):
+    for num in prime:
+        if(i%num==0):
+            break
+        if num==prime[-1]:
+            prime.append(i)
+print(prime)
+        
+7
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar 10 10:05:36 2021
+
+@author: danny
+"""
+
+def gcd(a,b):
+    while b!=0 :
+        r=a%b
+        a=b
+        b=r
+    return a
+def lcm(a,b):
+    return a*b/gcd(a,b)
+a=int(input('a='))
+b=int(input('b='))
+print('gcd(',a,',',b,')=',gcd(a,b))
+print('lcm(',a,',',b,')=',lcm(a,b))
+8
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar 10 10:14:17 2021
+
+@author: danny
+"""
+
+def compute(a,b,c):
+    if b**2-4*a*c<0:
+        return '無解'
+    elif b**2-4*a*c==0:
+        return (-b+(b**2-4*a*c)**0.5)/(2*a)
+    else:
+        root1=(-b+(b**2-4*a*c)**0.5)/(2*a)
+        root2=(-b-(b**2-4*a*c)**0.5)/(2*a)
+        return [root1,root2]
+a=int(input('輸入整數'))
+b=int(input('輸入整數'))
+c=int(input('輸入整數'))
+print('解:',compute(a,b,c))
+9
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar 10 10:39:34 2021
+
+@author: danny
+"""
+# numlist=[1,1,1,2,3,4,9,5,7,3,6]
+def average(numlist):
+    count=0
+    for num in numlist:
+        count+=num
+    return count/len(numlist)
+def Mode(numlist):
+    temp={}
+    for num in numlist:
+        if num not in temp:
+            temp[str(num)]=1
+        else:
+            temp[str(num)]+=1
+    max=0
+    for i in temp:
+        if temp[i]>max:
+            max=temp[i]
+            maxnum=i
+    return int(maxnum)
+def median(numlist):
+    for i in range(len(numlist)):#氣泡排序法
+        for j in range(i+1,len(numlist)):
+            if(numlist[i]>numlist[j]):
+                temp=numlist[i]
+                numlist[i]=numlist[j]
+                numlist[j]=temp
+    if len(numlist)%2:
+        return numlist[int(len(numlist)/2)+1]
+    else:
+        return (numlist[int(len(numlist)/2)]+numlist[int(len(numlist)/2)+1])/2
+numlist=[]
+for i in range(10):
+    numlist.append(int(input('輸入整數:')))
+print('numlist=',numlist)
+print('平均數')
+print(average(numlist))
+print('中位數:')
+print(median(numlist))
+print('眾數:')
+print(Mode(numlist))
+10
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar 10 10:24:30 2021
+
+@author: danny
+"""
+
+import numpy as np
+def array(a):
+    a=np.array(a)
+    a=a.reshape((3,3))
+    return a
+a=[1,2,3,4,2,3,4,2,3]
+b=[1,2,3,4,8,3,5,2,4]
+print('矩陣a')
+for i in range(9):
+    a.append(int(input('輸入整數')))
+print('矩陣b')
+for i in range(9):
+    b.append(int(input('輸入整數')))
+a=array(a)
+b=array(b)
+print('a=\n',a)
+print('b=\n',b)
+print('a+b=\n',a+b)
+print('a*b=\n',a*b)

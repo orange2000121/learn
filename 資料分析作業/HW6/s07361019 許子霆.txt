@@ -1,0 +1,30 @@
+1
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Apr 15 11:02:22 2021
+
+@author: danny
+"""
+
+import tkinter as tk
+window=tk.Tk()
+tk.Label(window, text="台塑企業").pack()#以pack打包
+tk.Label(window, text="台積電").pack()
+tk.Label(window, text="聯發科").pack()
+tk.Label(window, text="華碩電腦").pack()
+tk.Label(window, text="宏碁電腦").pack()
+window.mainloop()
+2
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Apr 15 11:10:15 2021
+
+@author: danny
+"""
+
+import tkinter as tk
+friends=['Peter','Kevin','Tracy','John','Tommy','Mike','Notron','Mary','Vicent']#好友列表
+window=tk.Tk()
+for i,name in enumerate(friends):
+    tk.Label(window, text=name).grid(row=int(i/3),column=i%3)
+window.mainloop()
